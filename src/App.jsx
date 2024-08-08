@@ -8,7 +8,7 @@ const App = () => {
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined,
     projects: [],
-    subProjects: [],
+    tasks: [],
   });
 
   const handleSelections = (id) => {
@@ -43,16 +43,32 @@ const App = () => {
         ...prevProjects,
         selectedProjectId: id,
         projects: [...prevProjects.projects, newProject],
-        subProjects: [...prevProjects.subProjects, { id: id, titles: [] }],
+        tasks: [...prevProjects.tasks, { id: id, titles: [] }],
       };
     });
   };
 
-  const handleAddNewTask = () => {};
+  const handleAddNewTask = (title) => {
+    if (title.trim() === "") {
+      return;
+    }
 
-  console.log(projectsState);
+    const titleIndex = projectsState.tasks.findIndex(
+      (task) => task.id === projectsState.selectedProjectId
+    );
 
-  const titles = projectsState.subProjects.find(
+    setProjectsState((prevProjects) => {
+      const copiedTasks = [...prevProjects.tasks];
+      const updatedTasks = [title, ...copiedTasks[titleIndex].titles];
+      //hozzáadáskor törlődik az id az objektumból és array lesz belőle, ami nem jó
+      return {
+        ...prevProjects,
+        tasks: updatedTasks,
+      };
+    });
+  };
+
+  const selectedTasks = projectsState.tasks.find(
     (task) => task.id === projectsState.selectedProjectId
   );
 
@@ -60,11 +76,18 @@ const App = () => {
     (project) => project.id === projectsState.selectedProjectId
   );
 
+  console.log(projectsState);
+
+  if (projectsState.tasks.length > 0) {
+    console.log("tasks:");
+    console.log(selectedTasks);
+  }
+
   let contentToDisplay = (
     <SelectedProject
       project={selectedProject}
-      subProjects={projectsState.subProjects}
-      titles={titles}
+      tasks={projectsState.tasks}
+      selectedTasks={selectedTasks}
       onAddNewTask={handleAddNewTask}
     />
   );

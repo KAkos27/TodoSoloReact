@@ -1,7 +1,8 @@
 import { useRef } from "react";
 
-const SelectedProject = ({ project, subProjects, titles, onAddNewTask }) => {
+const SelectedProject = ({ project, tasks, selectedTasks, onAddNewTask }) => {
   const taskName = useRef();
+  const key = Math.random();
 
   return (
     <div className="selected-project">
@@ -13,8 +14,8 @@ const SelectedProject = ({ project, subProjects, titles, onAddNewTask }) => {
       <button onClick={() => onAddNewTask(taskName.current.value)}>
         Feladat hozzáadása
       </button>
-      {subProjects.length > 0 ? (
-        titles.titles.map((title) => <div key={titles.id}>{title}</div>)
+      {selectedTasks.titles.length > 0 && tasks.length > 0 ? (
+        selectedTasks.titles.map((title) => <div key={key}>{title}</div>)
       ) : (
         <p>Nincsenek még feladatok</p>
       )}
