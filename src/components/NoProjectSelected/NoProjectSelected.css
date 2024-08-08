@@ -1,0 +1,32 @@
+.no-project-selected {
+  align-items: center;
+  display: flex;
+  margin-top: 4em;
+  width: 50%;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.no-project-selected img {
+  width: 5em;
+  margin-bottom: 1em;
+}
+
+.no-project-selected h1 {
+  margin-bottom: 1rem;
+}
+
+.no-project-selected button {
+  background-color: rgb(87, 84, 84);
+  border: none;
+  border-radius: 15px;
+  color: beige;
+  height: 3em;
+  margin-top: 3em;
+  width: 14em;
+}
+
+.no-project-selected button:hover {
+  background-color: rgb(26, 26, 26);
+  cursor: pointer;
+}

@@ -1,0 +1,47 @@
+.side-bar {
+  align-items: center;
+  background-color: rgb(41, 36, 36);
+  border-top-right-radius: 30px;
+  color: beige;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  height: 100%;
+  justify-content: flex-start;
+  margin-top: 2em;
+  padding: 1em;
+  width: 20vw;
+}
+
+.side-bar h2 {
+  font-size: 2em;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.side-bar__button,
+.side-bar__add-button {
+  background-color: rgb(87, 84, 84);
+  border: none;
+  border-radius: 15px;
+  color: beige;
+  height: 3em;
+  width: 70%;
+}
+
+.side-bar__button:hover,
+.side-bar__add-button:hover {
+  background-color: rgb(136, 133, 133);
+  color: black;
+  cursor: pointer;
+}
+
+.side-bar__button:focus,
+.side-bar__add-button:focus {
+  background-color: rgb(136, 133, 133);
+  color: black;
+}
+
+.side-bar__add-button {
+  margin-bottom: 2em;
+}
