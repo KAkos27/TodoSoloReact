@@ -1,6 +1,6 @@
 import "./Sidebar.css";
 
-const Sidebar = ({ onStartNewProject, projects }) => {
+const Sidebar = ({ onStartNewProject, projects, onSelectProject }) => {
   return (
     <div className="side-bar">
       <h2>Projektek</h2>
@@ -12,7 +12,11 @@ const Sidebar = ({ onStartNewProject, projects }) => {
       </button>
       {projects.length > 0 &&
         projects.map((project) => (
-          <button key={project.id} className="side-bar__button">
+          <button
+            key={project.id}
+            className="side-bar__button"
+            onClick={() => onSelectProject(project.id)}
+          >
             {project.title}
           </button>
         ))}

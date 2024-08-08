@@ -2,11 +2,13 @@ import { useState } from "react";
 import AddNewProject from "./components/AddNewProject/AddNewProject";
 import NoProjectSelected from "./components/NoProjectSelected/NoProjectSelected";
 import Sidebar from "./components/Sidebar/Sidebar";
+import SelectedProject from "./components/SelectedProject/SelectedProject";
 
 const App = () => {
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined,
     projects: [],
+    subProjects: [],
   });
 
   const handleSelections = (id) => {
@@ -34,20 +36,38 @@ const App = () => {
       title: title,
       description: description,
       dueDate: dueDate,
-      tasks: [],
     };
 
     setProjectsState((prevProjects) => {
       return {
         ...prevProjects,
+        selectedProjectId: id,
         projects: [...prevProjects.projects, newProject],
+        subProjects: [...prevProjects.subProjects, { id: id, titles: [] }],
       };
     });
   };
 
+  const handleAddNewTask = () => {};
+
   console.log(projectsState);
 
-  let contentToDisplay;
+  const titles = projectsState.subProjects.find(
+    (task) => task.id === projectsState.selectedProjectId
+  );
+
+  const selectedProject = projectsState.projects.find(
+    (project) => project.id === projectsState.selectedProjectId
+  );
+
+  let contentToDisplay = (
+    <SelectedProject
+      project={selectedProject}
+      subProjects={projectsState.subProjects}
+      titles={titles}
+      onAddNewTask={handleAddNewTask}
+    />
+  );
 
   if (projectsState.selectedProjectId === undefined) {
     contentToDisplay = (
@@ -67,6 +87,7 @@ const App = () => {
       <Sidebar
         onStartNewProject={handleSelections}
         projects={projectsState.projects}
+        onSelectProject={handleSelections}
       />
       {contentToDisplay}
     </>

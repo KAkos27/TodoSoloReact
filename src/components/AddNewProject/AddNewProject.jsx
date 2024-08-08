@@ -29,11 +29,17 @@ const AddNewProject = ({ onCancelNewProject, onSaveNewProject }) => {
         </button>
       </div>
       <div className="input-elements">
-        <label>Cím</label>
+        <label>
+          <strong>Cím</strong>
+        </label>
         <input ref={title} type="text" />
-        <label>Leírás</label>
+        <label>
+          <strong>Leírás</strong>
+        </label>
         <textarea ref={description} />
-        <label>Határidő</label>
+        <label>
+          <strong>Határidő</strong>
+        </label>
         <input ref={dueDate} type="date" />
       </div>
     </div>
