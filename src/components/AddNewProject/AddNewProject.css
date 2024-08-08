@@ -1,0 +1,68 @@
+.add-new-project {
+  display: flex;
+  flex-direction: column;
+  margin: 4em;
+  width: 50%;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  width: 20em;
+}
+
+.cancel-button {
+  background-color: white;
+  border: none;
+}
+
+.cancel-button:hover {
+  color: rgb(224, 59, 59);
+  cursor: pointer;
+}
+
+.save-button {
+  background-color: rgb(87, 84, 84);
+  border: none;
+  border-radius: 5px;
+  color: beige;
+  height: 2em;
+  margin-left: 0.8em;
+  padding: 0.4em;
+}
+
+.save-button:hover {
+  background-color: rgb(26, 26, 26);
+  cursor: pointer;
+}
+
+.input-elements {
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+}
+
+.input-elements label {
+  margin-top: 2em;
+}
+
+.input-elements input {
+  height: 2em;
+}
+
+.input-elements textarea {
+  height: 6em;
+}
+
+.input-elements input,
+.input-elements textarea {
+  background-color: rgb(243, 239, 239);
+  border: none;
+  border-bottom: 1px solid rgb(192, 185, 185);
+}
+
+.input-elements input:focus,
+.input-elements textarea:focus {
+  border-bottom: 1px solid rgb(41, 36, 36);
+  outline: none;
+}

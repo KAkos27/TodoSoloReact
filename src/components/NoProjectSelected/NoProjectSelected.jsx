@@ -1,7 +1,7 @@
 import noProjectImg from "/src/assets/no_project_selected.svg";
 import "./NoProjectSelected.css";
 
-const NoProjectSelected = () => {
+const NoProjectSelected = ({ onStartNewProject }) => {
   return (
     <div className="no-project-selected">
       <img src={noProjectImg} />
@@ -9,7 +9,9 @@ const NoProjectSelected = () => {
       <p>
         <strong>Válassz ki egy feladatot, vagy készíts egy újat!</strong>
       </p>
-      <button>Feladat létrehozása</button>
+      <button onClick={() => onStartNewProject(null)}>
+        Feladat létrehozása
+      </button>
     </div>
   );
 };
