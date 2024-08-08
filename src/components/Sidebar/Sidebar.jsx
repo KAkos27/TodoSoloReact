@@ -1,18 +1,21 @@
 import "./Sidebar.css";
 
-const Sidebar = ({ onStartNewProject }) => {
+const Sidebar = ({ onStartNewProject, projects }) => {
   return (
     <div className="side-bar">
-      <h2>Feladatok</h2>
+      <h2>Projektek</h2>
       <button
         className="side-bar__add-button"
         onClick={() => onStartNewProject(null)}
       >
-        + Feladat hozzáadása
+        + Projekt hozzáadása
       </button>
-      <button className="side-bar__button">feladat</button>
-      <button className="side-bar__button">feladat</button>
-      <button className="side-bar__button">feladat</button>
+      {projects.length > 0 &&
+        projects.map((project) => (
+          <button key={project.id} className="side-bar__button">
+            {project.title}
+          </button>
+        ))}
     </div>
   );
 };

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   margin: 4em;
+  margin-left: 6em;
   width: 50%;
 }
 
@@ -47,7 +48,7 @@
 }
 
 .input-elements input {
-  height: 2em;
+  height: 2.5em;
 }
 
 .input-elements textarea {
@@ -58,11 +59,11 @@
 .input-elements textarea {
   background-color: rgb(243, 239, 239);
   border: none;
-  border-bottom: 1px solid rgb(192, 185, 185);
+  border-bottom: 2px solid rgb(192, 185, 185);
 }
 
 .input-elements input:focus,
 .input-elements textarea:focus {
-  border-bottom: 1px solid rgb(41, 36, 36);
+  border-bottom: 2px solid rgb(41, 36, 36);
   outline: none;
 }
