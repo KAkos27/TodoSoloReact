@@ -32,11 +32,11 @@ const AddNewProject = ({ onCancelNewProject, onSaveNewProject }) => {
         <label>
           <strong>Cím</strong>
         </label>
-        <input ref={title} type="text" />
+        <input ref={title} type="text" maxLength={20} />
         <label>
           <strong>Leírás</strong>
         </label>
-        <textarea ref={description} />
+        <textarea ref={description} maxLength={373} />
         <label>
           <strong>Határidő</strong>
         </label>
@@ -45,5 +45,7 @@ const AddNewProject = ({ onCancelNewProject, onSaveNewProject }) => {
     </div>
   );
 };
+
+AddNewProject.displayName = "AddNewProject";
 
 export default AddNewProject;

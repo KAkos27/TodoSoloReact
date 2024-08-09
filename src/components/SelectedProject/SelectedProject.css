@@ -1,0 +1,36 @@
+.selected-project {
+  background-color: rgb(235, 229, 221);
+  border-radius: 1rem;
+  display: grid;
+  filter: drop-shadow(5px 5px 10px #000000);
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 3.5rem 3rem 1fr;
+  height: 20rem;
+  margin: 10rem;
+  padding: 2rem;
+  width: 30rem;
+}
+
+.selected-project h1 {
+  color: rgb(99, 98, 98);
+}
+
+.selected-project button {
+  background-color: rgb(235, 229, 221);
+  border: none;
+  cursor: pointer;
+}
+
+.selected-project button:hover {
+  color: rgb(224, 59, 59);
+}
+
+.selected-project__due-date {
+  color: rgb(154, 159, 163);
+  grid-row: 2;
+}
+
+.selected-project__description {
+  color: rgb(133, 133, 134);
+  grid-column: 1/3;
+}

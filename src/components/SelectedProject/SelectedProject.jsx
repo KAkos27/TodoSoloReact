@@ -1,26 +1,17 @@
-import { useRef } from "react";
+import "./SelectedProject.css";
 
-const SelectedProject = ({ project, tasks, selectedTasks, onAddNewTask }) => {
-  const taskName = useRef();
-  const key = Math.random();
-
+const SelectedProject = ({ project, onDeleteProject }) => {
   return (
     <div className="selected-project">
       <h1>{project.title}</h1>
-      <p>{project.dueDate}</p>
-      <p>{project.description}</p>
-      <h2>Feladatok</h2>
-      <input ref={taskName} type="text" />
-      <button onClick={() => onAddNewTask(taskName.current.value)}>
-        Feladat hozzáadása
+      <button onClick={onDeleteProject}>
+        <strong>Törlés</strong>
       </button>
-      {selectedTasks.titles.length > 0 && tasks.length > 0 ? (
-        selectedTasks.titles.map((title) => <div key={key}>{title}</div>)
-      ) : (
-        <p>Nincsenek még feladatok</p>
-      )}
+      <p className="selected-project__due-date">{project.dueDate}</p>
+      <strong className="selected-project__description">
+        {project.description}
+      </strong>
     </div>
   );
 };
-
 export default SelectedProject;

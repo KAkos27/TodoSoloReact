@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+
+import Modal from "./components/Modal/Modal";
 import AddNewProject from "./components/AddNewProject/AddNewProject";
 import NoProjectSelected from "./components/NoProjectSelected/NoProjectSelected";
 import Sidebar from "./components/Sidebar/Sidebar";
 import SelectedProject from "./components/SelectedProject/SelectedProject";
 
 const App = () => {
+  const modal = useRef();
+
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined,
     projects: [],
-    tasks: [],
   });
 
   const handleSelections = (id) => {
@@ -26,6 +29,7 @@ const App = () => {
       description.trim() === "" ||
       dueDate.trim() === ""
     ) {
+      modal.current.showModal();
       return;
     }
 
@@ -36,6 +40,7 @@ const App = () => {
       title: title,
       description: description,
       dueDate: dueDate,
+      tasks: [],
     };
 
     setProjectsState((prevProjects) => {
@@ -43,52 +48,31 @@ const App = () => {
         ...prevProjects,
         selectedProjectId: id,
         projects: [...prevProjects.projects, newProject],
-        tasks: [...prevProjects.tasks, { id: id, titles: [] }],
       };
     });
   };
 
-  const handleAddNewTask = (title) => {
-    if (title.trim() === "") {
-      return;
-    }
-
-    const titleIndex = projectsState.tasks.findIndex(
-      (task) => task.id === projectsState.selectedProjectId
+  const handleDeleteProject = () => {
+    const updatedProjects = projectsState.projects.filter(
+      (project) => project.id !== projectsState.selectedProjectId
     );
-
-    setProjectsState((prevProjects) => {
-      const copiedTasks = [...prevProjects.tasks];
-      const updatedTasks = [title, ...copiedTasks[titleIndex].titles];
-      //hozzáadáskor törlődik az id az objektumból és array lesz belőle, ami nem jó
+    setProjectsState((prevPojects) => {
       return {
-        ...prevProjects,
-        tasks: updatedTasks,
+        ...prevPojects,
+        selectedProjectId: undefined,
+        projects: [...updatedProjects],
       };
     });
   };
-
-  const selectedTasks = projectsState.tasks.find(
-    (task) => task.id === projectsState.selectedProjectId
-  );
 
   const selectedProject = projectsState.projects.find(
     (project) => project.id === projectsState.selectedProjectId
   );
 
-  console.log(projectsState);
-
-  if (projectsState.tasks.length > 0) {
-    console.log("tasks:");
-    console.log(selectedTasks);
-  }
-
   let contentToDisplay = (
     <SelectedProject
       project={selectedProject}
-      tasks={projectsState.tasks}
-      selectedTasks={selectedTasks}
-      onAddNewTask={handleAddNewTask}
+      onDeleteProject={handleDeleteProject}
     />
   );
 
@@ -112,6 +96,11 @@ const App = () => {
         projects={projectsState.projects}
         onSelectProject={handleSelections}
       />
+
+      <Modal ref={modal} buttonCaption={"Rendben"}>
+        <h2>Valami nem jó</h2>
+        <p>Úgy néz ki az egyik mezőt üresen hagytad</p>
+      </Modal>
       {contentToDisplay}
     </>
   );
