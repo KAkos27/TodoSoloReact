@@ -1,1 +1,1 @@
-https://profound-longma-83d5e9.netlify.app
+https://magical-pavlova-910c25.netlify.app
