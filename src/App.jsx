@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import SelectedProject from "./components/SelectedProject/SelectedProject";
 
 const App = () => {
+  const taskText = useRef();
   const modal = useRef();
 
   const [projectsState, setProjectsState] = useState({
@@ -52,14 +53,70 @@ const App = () => {
     });
   };
 
+  const handleAddNewTask = () => {
+    const text = taskText.current.value;
+    taskText.current.value = "";
+
+    if (text.trim() === "") {
+      return;
+    }
+
+    const selectedProjectIndex = projectsState.projects.findIndex(
+      (project) => project.id === projectsState.selectedProjectId
+    );
+
+    const id = Math.random();
+
+    const newTask = {
+      id: id,
+      text: text,
+    };
+
+    const updatedTasks = [
+      newTask,
+      ...projectsState.projects[selectedProjectIndex].tasks,
+    ];
+
+    const updatedProjects = [...projectsState.projects];
+    updatedProjects[selectedProjectIndex].tasks = [...updatedTasks];
+
+    setProjectsState((prevPojects) => {
+      return {
+        ...prevPojects,
+        projects: [...updatedProjects],
+      };
+    });
+  };
+
   const handleDeleteProject = () => {
     const updatedProjects = projectsState.projects.filter(
       (project) => project.id !== projectsState.selectedProjectId
     );
+
     setProjectsState((prevPojects) => {
       return {
         ...prevPojects,
         selectedProjectId: undefined,
+        projects: [...updatedProjects],
+      };
+    });
+  };
+
+  const handleDeleteTask = (taskId) => {
+    const selectedProjectIndex = projectsState.projects.findIndex(
+      (project) => project.id === projectsState.selectedProjectId
+    );
+
+    const updatedTasks = projectsState.projects[
+      selectedProjectIndex
+    ].tasks.filter((task) => task.id !== taskId);
+
+    const updatedProjects = [...projectsState.projects];
+    updatedProjects[selectedProjectIndex].tasks = [...updatedTasks];
+
+    setProjectsState((prevPojects) => {
+      return {
+        ...prevPojects,
         projects: [...updatedProjects],
       };
     });
@@ -73,6 +130,9 @@ const App = () => {
     <SelectedProject
       project={selectedProject}
       onDeleteProject={handleDeleteProject}
+      onAddNewTask={handleAddNewTask}
+      onDeleteTask={handleDeleteTask}
+      ref={taskText}
     />
   );
 

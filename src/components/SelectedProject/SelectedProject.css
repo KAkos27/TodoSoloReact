@@ -6,7 +6,7 @@
   grid-template-columns: 80% 20%;
   grid-template-rows: 3.5rem 3rem 1fr;
   height: 20rem;
-  margin: 10rem;
+  margin: 10rem 5rem;
   padding: 2rem;
   width: 30rem;
 }
@@ -33,4 +33,62 @@
 .selected-project__description {
   color: rgb(133, 133, 134);
   grid-column: 1/3;
+}
+
+.tasks-panel {
+  background-color: rgb(235, 229, 221);
+  border-radius: 1rem;
+  filter: drop-shadow(5px 5px 10px #000000);
+  height: 20rem;
+  margin: 10rem 10em 10em 0;
+  padding: 2rem;
+  width: 24rem;
+}
+
+.tasks-panel button {
+  background-color: rgb(87, 84, 84);
+  border: none;
+  border-radius: 0.4rem;
+  color: rgb(235, 229, 221);
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+}
+
+.tasks-panel input {
+  height: 1.8rem;
+  background-color: rgb(243, 239, 239);
+  border: none;
+  border-bottom: 2px solid rgb(192, 185, 185);
+}
+
+.tasks-panel input:focus {
+  border-bottom: 2px solid rgb(41, 36, 36);
+  outline: none;
+}
+
+.tasks-panel button:hover {
+  background-color: rgb(136, 133, 133);
+  color: black;
+  cursor: pointer;
+}
+
+.tasks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tasks button {
+  background-color: rgb(155, 185, 204);
+  border: none;
+  border-radius: 0.4rem;
+  color: rgb(39, 38, 37);
+  padding: 0.4rem;
+}
+
+.tasks button:hover {
+  background-color: rgb(235, 229, 221);
+  color: rgb(224, 59, 59);
+  cursor: pointer;
 }
