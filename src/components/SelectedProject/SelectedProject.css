@@ -1,4 +1,10 @@
+.selected-container {
+  display: flex;
+}
+
 .selected-project {
+  -webkit-animation: slideProject 0.5s forwards;
+  animation: slideProject 0.5s forwards;
   background-color: rgb(235, 229, 221);
   border-radius: 1rem;
   display: grid;
@@ -6,9 +12,23 @@
   grid-template-columns: 80% 20%;
   grid-template-rows: 3.5rem 3rem 1fr;
   height: 20rem;
+  left: -500px;
   margin: 10rem 5rem;
   padding: 2rem;
+  position: absolute;
   width: 30rem;
+}
+
+@-webkit-keyframes slideProject {
+  100% {
+    left: 330px;
+  }
+}
+
+@keyframes slideProject {
+  100% {
+    left: 330px;
+  }
 }
 
 .selected-project h1 {
@@ -36,13 +56,33 @@
 }
 
 .tasks-panel {
+  -webkit-animation: slideTask 0.5s forwards;
+  animation: slideTask 0.5s forwards;
   background-color: rgb(235, 229, 221);
   border-radius: 1rem;
   filter: drop-shadow(5px 5px 10px #000000);
   height: 20rem;
-  margin: 10rem 10em 10em 0;
+  left: -500px;
+  margin: 10rem 10rem 10rem 0;
   padding: 2rem;
+  position: absolute;
   width: 24rem;
+}
+
+@-webkit-keyframes slideTask {
+  100% {
+    left: 960px;
+  }
+}
+
+@keyframes slideTask {
+  100% {
+    left: 960px;
+  }
+}
+
+.no-tasks-image {
+  width: 1.2rem;
 }
 
 .tasks-panel button {
@@ -67,7 +107,7 @@
 }
 
 .tasks-panel button:hover {
-  background-color: rgb(136, 133, 133);
+  background-color: rgb(64, 189, 255);
   color: black;
   cursor: pointer;
 }
@@ -80,8 +120,8 @@
 }
 
 .tasks button {
-  background-color: rgb(155, 185, 204);
-  border: none;
+  background-color: rgb(64, 189, 255);
+  border: 1px solid rgb(64, 189, 255);
   border-radius: 0.4rem;
   color: rgb(39, 38, 37);
   padding: 0.4rem;
@@ -89,6 +129,54 @@
 
 .tasks button:hover {
   background-color: rgb(235, 229, 221);
+  border-color: rgb(224, 59, 59);
   color: rgb(224, 59, 59);
+  transition: 100ms ease-in-out;
+  transform: scale(1.1);
   cursor: pointer;
+}
+
+@media (max-width: 1380px) {
+  .selected-project {
+    margin: 10rem 2.5rem;
+  }
+
+  .tasks-panel {
+    margin: 10rem 2.5rem 2.5rem 0;
+  }
+
+  @-webkit-keyframes slideTask {
+    100% {
+      left: 880px;
+    }
+  }
+
+  @keyframes slideTask {
+    100% {
+      left: 880px;
+    }
+  }
+}
+
+@media (max-width: 1270px) {
+  .selected-project {
+    margin: 2.5rem 2.5rem;
+  }
+
+  .tasks-panel {
+    width: 30rem;
+    top: 240px;
+  }
+
+  @-webkit-keyframes slideTask {
+    100% {
+      left: 370px;
+    }
+  }
+
+  @keyframes slideTask {
+    100% {
+      left: 370px;
+    }
+  }
 }

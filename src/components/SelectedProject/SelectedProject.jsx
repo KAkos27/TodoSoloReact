@@ -1,5 +1,7 @@
 import { forwardRef } from "react";
 
+import noProjectImg from "/src/assets/no_project_selected.svg";
+
 import "./SelectedProject.css";
 
 const SelectedProject = forwardRef(
@@ -33,7 +35,10 @@ const SelectedProject = forwardRef(
                 </button>
               ))
             ) : (
-              <strong>Nincsnek még feladatok</strong>
+              <>
+                <img className="no-tasks-image" src={noProjectImg} />
+                <strong>Nincsnek még feladatok</strong>
+              </>
             )}
           </div>
         </div>

@@ -1,9 +1,30 @@
 .add-new-project {
+  -webkit-animation: slideNewProject 0.5s forwards;
+  animation: slideNewProject 0.5s forwards;
+  background-color: rgb(235, 229, 221);
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
   display: flex;
+  filter: drop-shadow(5px 5px 10px #000000);
   flex-direction: column;
-  margin: 4rem;
-  margin-left: 6rem;
-  width: 50%;
+  height: 30rem;
+  left: -500px;
+  padding: 3rem;
+  position: absolute;
+  margin-top: 4rem;
+  width: 20%;
+}
+
+@-webkit-keyframes slideNewProject {
+  100% {
+    left: 344px;
+  }
+}
+
+@keyframes slideNewProject {
+  100% {
+    left: 344px;
+  }
 }
 
 .menu {
@@ -13,7 +34,7 @@
 }
 
 .cancel-button {
-  background-color: white;
+  background-color: rgb(235, 229, 221);
   border: none;
 }
 
@@ -67,4 +88,16 @@
 .input-elements textarea:focus {
   border-bottom: 2px solid rgb(41, 36, 36);
   outline: none;
+}
+
+@media (max-width: 2000px) {
+  .add-new-project {
+    width: 30%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .add-new-project {
+    width: 50%;
+  }
 }
