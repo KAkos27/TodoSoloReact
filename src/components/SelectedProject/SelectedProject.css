@@ -125,15 +125,15 @@
   border-radius: 0.4rem;
   color: rgb(39, 38, 37);
   padding: 0.4rem;
+  transition: 100ms ease-in-out;
 }
 
 .tasks button:hover {
   background-color: rgb(235, 229, 221);
   border-color: rgb(224, 59, 59);
   color: rgb(224, 59, 59);
-  transition: 100ms ease-in-out;
-  transform: scale(1.1);
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 @media (max-width: 1380px) {
