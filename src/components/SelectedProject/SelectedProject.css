@@ -180,3 +180,21 @@
     }
   }
 }
+
+@media (max-width: 966px) {
+  .selected-project {
+    margin: 2.5rem 1.3rem;
+  }
+
+  @-webkit-keyframes slideTask {
+    100% {
+      left: 370px;
+    }
+  }
+
+  @keyframes slideTask {
+    100% {
+      left: 350px;
+    }
+  }
+}
