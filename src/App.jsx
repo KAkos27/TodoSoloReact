@@ -58,6 +58,7 @@ const App = () => {
     taskText.current.value = "";
 
     if (text.trim() === "") {
+      modal.current.showModal();
       return;
     }
 
