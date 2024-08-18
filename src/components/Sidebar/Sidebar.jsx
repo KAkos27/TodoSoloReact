@@ -10,16 +10,15 @@ const Sidebar = ({ onStartNewProject, projects, onSelectProject }) => {
       >
         + Projekt hozzáadása
       </button>
-      {projects.length > 0 &&
-        projects.map((project) => (
-          <button
-            key={project.id}
-            className="side-bar__button"
-            onClick={() => onSelectProject(project.id)}
-          >
-            {project.title}
-          </button>
-        ))}
+      {projects.map((project) => (
+        <button
+          key={project.id}
+          className="side-bar__button"
+          onClick={() => onSelectProject(project.id)}
+        >
+          {project.title}
+        </button>
+      ))}
     </div>
   );
 };

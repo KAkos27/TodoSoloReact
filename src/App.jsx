@@ -25,11 +25,7 @@ const App = () => {
   };
 
   const handleSaveProject = (title, description, dueDate) => {
-    if (
-      title.trim() === "" ||
-      description.trim() === "" ||
-      dueDate.trim() === ""
-    ) {
+    if (!(title.trim() || description.trim() || dueDate.trim())) {
       modal.current.showModal();
       return;
     }
@@ -37,13 +33,14 @@ const App = () => {
     const id = Math.random();
 
     const newProject = {
-      id: id,
-      title: title,
-      description: description,
-      dueDate: dueDate,
+      id,
+      title,
+      description,
+      dueDate,
       tasks: [],
     };
 
+    // return nem kell
     setProjectsState((prevProjects) => {
       return {
         ...prevProjects,
@@ -57,7 +54,7 @@ const App = () => {
     const text = taskText.current.value;
     taskText.current.value = "";
 
-    if (text.trim() === "") {
+    if (!text.trim()) {
       modal.current.showModal();
       return;
     }
@@ -69,8 +66,8 @@ const App = () => {
     const id = Math.random();
 
     const newTask = {
-      id: id,
-      text: text,
+      id,
+      text,
     };
 
     const updatedTasks = [

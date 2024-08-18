@@ -24,7 +24,7 @@ const SelectedProject = forwardRef(
             <button onClick={onAddNewTask}>Feladat hozzáadása</button>
           </div>
           <div className="tasks">
-            {project.tasks.length > 0 ? (
+            {project.tasks.length ? (
               project.tasks.map((task) => (
                 <button
                   id={task.id}
